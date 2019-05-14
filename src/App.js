@@ -1,25 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div class="sidebar">
+    <ul>
+        <li>
+            <label for="color">Color:</label>
+            <input type="color" id="color" />
+        </li>
+        <li>
+            <label for="weight">Stroke:</label>
+            <input type="number" id="weight" min="2" max="200" value="3" />
+        </li>
+        <li>
+            <button id="clear"><i><DeleteIcon/></i></button>
+        </li>
+    </ul>
+</div>
   );
 }
 
