@@ -1,8 +1,45 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { parenthesizedExpression } from '@babel/types';
 
-function App() {
+class App extends Component {
+  state={
+    paths: [],
+    currentPath: []
+  }
+  
+  setup=()=>{
+    createCanvas(window.innerWidth, window.innerHeight)
+    background(255)
+  }
+  
+  draw=()=>{
+    noFill();
+    if (mouseIsPressed) {
+      const point= {
+        x: mouseX,
+        y: mouseY
+      };
+      currentPath.push(point);
+    }
+    paths.forEach(path=>{
+      beginShape();
+      path.forEach(point =>{
+        stroke(point.color);
+        strokeWeight(point.weight);
+        vertex(point.x, point.y);
+      });
+      endShape()
+    });
+  }
+
+  mousePressed=()=>{
+    currentPath=[];
+    paths.push(currentPath)
+  }
+
+  render(){
   return (
     <div class="sidebar">
     <ul>
@@ -20,6 +57,7 @@ function App() {
     </ul>
 </div>
   );
+}
 }
 
 export default App;
